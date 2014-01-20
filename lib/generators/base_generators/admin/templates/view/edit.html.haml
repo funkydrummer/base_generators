@@ -1,0 +1,5 @@
+- content_for(:header_title) do
+  = t('common.editing', default: 'Editing:')
+  = resource.to_s
+
+= render 'form'

@@ -1,0 +1,18 @@
+.row-fluid
+  .span12
+    .box
+      .box-header
+        %span.title
+          - if resource.persisted?
+            = resource.to_s
+          - else
+            = t('common.new_record', default: 'New record')
+        = render partial: "/admin/shared/toolbar", locals: {resource: resource}
+      .box-content
+        = simple_form_for [:admin, resource], html: { class: "form-horizontal fill-up validatable", multipart: true } do |f|
+          .padded
+            <%- attributes.each do |attr| -%>
+              = f.input :<%= attr %>
+            <%- end -%>
+          .form-actions
+            %button{ class: "btn btn-blue", type: "submit" }= t('common.save', :default=>"Save")

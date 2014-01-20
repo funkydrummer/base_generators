@@ -1,0 +1,4 @@
+- content_for(:header_title) do
+  = t('admin.pages.new_<%= resource %>', default: 'New <%= resource %>')
+
+= render 'form'

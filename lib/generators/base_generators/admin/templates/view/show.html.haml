@@ -1,0 +1,23 @@
+- content_for(:header_title) do
+  = resource.to_s
+.row-fluid
+  .span12
+    .box
+      .box-header
+        %span.title= resource.to_s
+        %ul.box-toolbar
+          %li
+            = link_to [:admin, resource.class.name.pluralize.tableize.to_sym], :class=>"label" do
+              = draw_icon 'list'
+              = t('common.back_to_list', default: 'List')
+            = link_to [:edit, :admin, resource], :class=>"label" do
+              = draw_icon 'pencil'
+              = t('common.edit', default: 'Edit')
+
+      .box-content
+        %table.table.table-striped.responsive
+          <%- attributes.each do |attr| -%>
+            %tr
+              %td(width="15%")= resource.class.human_attribute_name(:<%= attr %>)
+              %td= resource.<%= attr %>
+          <%- end -%>
