@@ -7,7 +7,7 @@ module BaseGenerators
       class_option :private_methods, :type => :boolean, :default => true, :description => "Skip private methods"
     
       def generate_controller
-        template "controller.rb", "app/controllers/admin/#{resource}_controller.rb"  
+        template "controller.rb", "app/controllers/admin/#{resources}_controller.rb"  
       end  
 
       private  
@@ -22,6 +22,10 @@ module BaseGenerators
 
       def resource
         controller_name.underscore
+      end
+      
+      def resources
+        resource.pluralize
       end
     end 
   end
