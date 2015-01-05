@@ -24,6 +24,11 @@ module GeneratorsTestHelper
         base.tests "BaseGenerators::Admin::#{base.name.sub(/Test$/, '')}".constantize
       rescue
       end
+
+      begin
+        base.tests "BaseGenerators::#{base.name.sub(/Test$/, '')}".constantize
+      rescue
+      end
     end
   end
 end
