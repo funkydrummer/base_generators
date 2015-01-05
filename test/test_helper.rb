@@ -32,4 +32,4 @@ end
 def assert_no_instance_method(method, content)
   assert content !~ /(\s+)def #{method}(\(.+\))?(.*?)\n\1end/m, "Expected to don't have method #{method}"
   yield $3.strip if block_given?
-end 
+end
